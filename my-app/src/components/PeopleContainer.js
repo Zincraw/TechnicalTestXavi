@@ -1,20 +1,27 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import PeopleInformation from './PeopleInformation'
-import { people } from '../data/DataSamplePeople'
+import axios from "axios"
 
+const baseURL = "https://randomuser.me/api/?results=5"
 let counter = 0
 
 const PeopleContainer = () => {  
+  const [post, setPost] = useState(null)
   const [users, setUsers] = useState([])
+  useEffect(() => {
+    axios.get(baseURL).then((response) => {
+      setPost(response.data.results)
+    })
+  }, [])
     const handleAddUser = () => {
-      if(counter === people.length){
+      if(counter === post.length){
         setUsers([])
         counter = 0
       } else {
       const newUser = {
-        name: people[counter].name.first + ' ' + people[counter].name.last ,
-        picture: people[counter].picture.large,
-        email: people[counter].email
+        name: post[counter].name.first + ' ' + post[counter].name.last ,
+        picture: post[counter].picture.large,
+        email: post[counter].email
       }
       setUsers([...users, newUser])
       counter++
