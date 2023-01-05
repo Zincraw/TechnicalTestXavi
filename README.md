@@ -1,3 +1,3 @@
 # Sandbox Fibonacci Sequence
 
-<https://codesandbox.io/s/fibonacci-exercise-1pipgu?file=/src/index.js>
+<https://codesandbox.io/s/serverless-star-w9ve4o?file=/index.html>
